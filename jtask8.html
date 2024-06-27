@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Task 8</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            background-color: white;
+            padding: 30px;
+            width: 700px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(to bottom, rgb(231, 231, 139), #ffccff, #ffcccc);
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: blue;
+        }
+        .error {
+            color: red;
+            display: none; 
+        }
+        input.error, textarea.error {
+            border-color: red;
+        }
+        label {
+            width: 150px;
+            display: inline-block;
+            text-align: right;
+            padding-right: 20px;
+        }
+        .form-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .form-control {
+            width: 400px;
+        }
+        .submit-btn {
+            text-align: center;
+        }
+        .submit-btn input {
+            background-color: red;
+            color: white;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Registration Form</h2>
+        <form id="myForm">
+            <div class="form-group">
+                <label for="firstname">First Name</label>
+                <input type="text" id="firstname" name="firstname" class="form-control">
+                <span id="firstnameError" class="error ml-2">POOR</span>
+            </div>
+            
+            <div class="form-group">
+                <label for="lastname">Last Name</label>
+                <input type="text" id="lastname" name="lastname" class="form-control">
+                <span id="lastnameError" class="error ml-2">POOR</span>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" class="form-control">
+                <span id="emailError" class="error ml-2">POOR</span>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" class="form-control">
+                <span id="passwordError" class="error ml-2">POOR</span>
+            </div>
+            
+            <div class="form-group">
+                <label for="repassword">Re-enter Password</label>
+                <input type="password" id="repassword" name="repassword" class="form-control">
+                <span id="repasswordError" class="error ml-2">POOR/MISMATCH</span>
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <div style="margin-left: 20px;">
+                    <input type="radio" id="male" name="gender" value="Male" class="form-check-input"> Male
+                    <br>
+                    <input type="radio" id="female" name="gender" value="Female" class="form-check-input"> Female
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="text" id="age" name="age" class="form-control">
+                <span id="ageError" class="error ml-2">POOR</span>
+            </div>
+
+            <div class="form-group">
+                <label for="phonenumber">Phone Number</label>
+                <input type="text" id="phonenumber" name="phonenumber" class="form-control">
+                <span id="phonenumberError" class="error ml-2">POOR</span>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address</label>
+                <textarea id="address" name="address" class="form-control" style="height:100px;"></textarea>
+                <span id="addressError" class="error ml-2">POOR</span>
+            </div>
+            
+            <div class="form-group">
+                <label for="state">State</label>
+                <input type="text" id="state" name="state" class="form-control">
+                <span id="stateError" class="error ml-2">POOR</span>
+            </div>
+
+            <div class="form-group">
+                <label for="country">Country</label>
+                <select id="country" name="country" class="form-control" style="width: 30%;">
+                    <option value="">Choose your country</option>
+                    <option value="India">India</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Languages known</label>
+                <div class="d-flex flex-wrap">
+                    <div class="form-check mr-3">
+                        <input type="checkbox" id="english" name="languages[]" value="English"> English
+                        <input type="checkbox" id="kannada" name="languages[]" value="Kannada" style="margin-left: 10px;"> Kannada
+                        <input type="checkbox" id="hindi" name="languages[]" value="Hindi" style="margin-left: 10px;"> Hindi
+                        <input type="checkbox" id="telugu" name="languages[]" value="Telugu" style="margin-left: 10px;"> Telugu
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="checkbox" id="declaration" name="declaration" required style="margin-left: 20px; margin-right: 5px;"> Hereby I declare all the given details are true 
+            </div>
+            <div class="form-group" style="margin-left: 400px;">
+                Log in to <a href="https://ethnus.com/" target="_blank">Ethnus</a> website
+            </div>
+
+            <div class="submit-btn">
+                <input type="submit" value="REGISTER" class="btn btn-danger">
+            </div>
+        </form>
+    </div>
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            // Clear previous errors
+            document.querySelectorAll('.error').forEach(function(span) {
+                span.style.display = 'none';
+            });
+            document.querySelectorAll('.form-control').forEach(function(input) {
+                input.classList.remove('error');
+            });
+
+            // Validate fields
+            let isValid = true;
+
+            // Validate first name
+            const firstName = document.getElementById('firstname');
+            if (firstName.value.trim() === '') {
+                isValid = false;
+                document.getElementById('firstnameError').style.display = 'inline';
+                firstName.classList.add('error');
+            }
+
+            // Validate last name
+            const lastName = document.getElementById('lastname');
+            if (lastName.value.trim() === '') {
+                isValid = false;
+                document.getElementById('lastnameError').style.display = 'inline';
+                lastName.classList.add('error');
+            }
+
+            // Validate email
+            const email = document.getElementById('email');
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email.value)) {
+                isValid = false;
+                document.getElementById('emailError').style.display = 'inline';
+                email.classList.add('error');
+            }
+
+            // Validate password
+            const password = document.getElementById('password');
+            if (password.value.length < 6) {
+                isValid = false;
+                document.getElementById('passwordError').style.display = 'inline';
+                password.classList.add('error');
+            }
+
+            // Validate re-entered password
+            const rePassword = document.getElementById('repassword');
+            if (rePassword.value !== password.value || rePassword.value.length < 6) {
+                isValid = false;
+                document.getElementById('repasswordError').style.display = 'inline';
+                rePassword.classList.add('error');
+            }
+
+            // Validate age
+            const age = document.getElementById('age');
+            if (age.value.trim() === '' || isNaN(age.value)) {
+                isValid = false;
+                document.getElementById('ageError').style.display = 'inline';
+                age.classList.add('error');
+            }
+
+            // Validate phone number
+            const phoneNumber = document.getElementById('phonenumber');
+            if (phoneNumber.value.trim() === '' || isNaN(phoneNumber.value)) {
+                isValid = false;
+                document.getElementById('phonenumberError').style.display = 'inline';
+                phoneNumber.classList.add('error');
+            }
+
+            // Validate address
+            const address = document.getElementById('address');
+            if (address.value.trim() === '') {
+                isValid = false;
+                document.getElementById('addressError').style.display = 'inline';
+                address.classList.add('error');
+            }
+
+            // Validate state
+            const state = document.getElementById('state');
+            if (state.value.trim() === '') {
+                isValid = false;
+                document.getElementById('stateError').style.display = 'inline';
+                state.classList.add('error');
+            }
+
+            if (!isValid) {
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>

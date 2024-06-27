@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 6</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        button {
+            width: 100%;
+        }
+
+        /* Custom styles to remove green color and tick from hobbies select */
+        .form-control.is-valid, .was-validated .form-control:valid {
+            border-color: #ced4da;
+            padding-right: .75rem;
+            background-image: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <form class="needs-validation" novalidate>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" required>
+                <div class="invalid-feedback">
+                    Name is required
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" required>
+                <div class="invalid-feedback">
+                    Email is required
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" required>
+                <div class="invalid-feedback">
+                    Password is required
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="hobbies">Hobbies</label>
+                <select class="form-control" id="hobbies">
+                    <option value="">Select your hobby</option>
+                    <option value="Reading">Reading</option>
+                    <option value="Travelling">Travelling</option>
+                    <option value="Cooking">Cooking</option>
+                    <option value="Sports">Sports</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    
+    <script>
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                var forms = document.getElementsByClassName('needs-validation');
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

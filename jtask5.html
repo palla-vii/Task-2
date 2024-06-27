@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS Task 5</title>
+    <style>
+        .container{
+            width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            padding-left: 300px;
+        }
+        .error {
+            color: red;
+        }
+        input.error, textarea.error {
+            border-color: red;
+        }
+    </style>
+</head>
+<body>
+  <div class="container">
+    <form id="myForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        <span id="nameError" class="error"></span>
+        <br><br>
+        
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email">
+        <span id="emailError" class="error"></span>
+        <br><br>
+        
+        <label for="website">Website:</label>
+        <input type="text" id="website" name="website">
+        <span id="websiteError" class="error"></span>
+        <br><br>
+        
+        <label for="message">Message:</label>
+        <textarea id="message" name="message"></textarea>
+        <span id="messageError" class="error"></span>
+        <br><br>
+        
+        <button type="submit">Submit</button>
+    </form>
+  </div>  
+
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            let valid = true;
+
+            // Name validation
+            let name = document.getElementById('name').value;
+            if (name === "") {
+                valid = false;
+                document.getElementById('nameError').textContent = "This field is required";
+                document.getElementById('name').classList.add('error');
+            } else {
+                document.getElementById('nameError').textContent = "";
+                document.getElementById('name').classList.remove('error');
+            }
+
+            // Email validation
+            let email = document.getElementById('email').value;
+            let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+            if (email === "" || !emailPattern.test(email)) {
+                valid = false;
+                document.getElementById('emailError').textContent = "A valid email address is required";
+                document.getElementById('email').classList.add('error');
+            } else {
+                document.getElementById('emailError').textContent = "";
+                document.getElementById('email').classList.remove('error');
+            }
+
+            // Website validation
+            let website = document.getElementById('website').value;
+            let urlPattern = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/;
+            if (website === "" || !urlPattern.test(website)) {
+                valid = false;
+                document.getElementById('websiteError').textContent = "A valid url is required";
+                document.getElementById('website').classList.add('error');
+            } else {
+                document.getElementById('websiteError').textContent = "";
+                document.getElementById('website').classList.remove('error');
+            }
+
+            // Message validation
+            let message = document.getElementById('message').value;
+            if (message === "") {
+                valid = false;
+                document.getElementById('messageError').textContent = "This field is required";
+                document.getElementById('message').classList.add('error');
+            } else {
+                document.getElementById('messageError').textContent = "";
+                document.getElementById('message').classList.remove('error');
+            }
+        });
+    </script>
+</body>
+</html>

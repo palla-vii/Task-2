@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS TASK1</title>
+</head>
+<body>
+    <h2>Javascript function that reverese a number</h2>
+
+    <script>
+        function reverseNumber(num) {
+          let numStr = num.toString();
+          let reversedStr = numStr.split('').reverse().join('');
+          let reversedNum = parseInt(reversedStr);
+          return reversedNum;
+        }
+        let x = 32243;
+        let reversedNumber = reverseNumber(x);
+        console.log(`Original number: ${x}`); // Output: Original number: 32243
+        console.log(`Reversed number: ${reversedNumber}`); // Output: Reversed number: 34223
+    </script>
+
+    
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS TASK 4</title>
+    <style>
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+        <h2>Show Date and Time </h2>
+        <button onclick="showDate()">Show Date</button>
+        <div class="result">
+            <p id="dateResult"></p>
+        </div>
+        <button onclick="showTime()">Show Time</button>
+        <div class="result">
+            <p id="timeResult"></p>
+
+    <script>
+        function showDate() {
+            const now = new Date();
+            const options = { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Kolkata' };
+            const istDate = now.toLocaleDateString('en-GB', options); 
+            document.getElementById('dateResult').textContent = `${istDate}`;
+        }
+
+        function showTime() {
+            const now = new Date();
+            const options = { timeZone: 'Asia/Kolkata' };
+            const istTime = now.toLocaleString('en-GB', options);
+            document.getElementById('timeResult').textContent = `${istTime}`;
+        }
+    </script>
+</body>
+</html>

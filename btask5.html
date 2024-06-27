@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 5</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .form-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        .form-group {
+            display: flex;
+            align-items: center;
+        }
+        .form-group label {
+            width: 150px;
+            margin-bottom: 0;
+        }
+        .input-group-text {
+            width: 40px;
+            justify-content: center;
+        }
+        .form-check-inline {
+            margin-left: 150px;
+        }
+        .btn-custom {
+            margin-left: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="form-container">
+            <form novalidate>
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                        </div>
+                        <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
+                        <div class="invalid-feedback">
+                            Please supply your first name
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                        </div>
+                        <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
+                        <div class="invalid-feedback">
+                            Please supply your last name
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-Mail</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                        </div>
+                        <input type="email" class="form-control" id="email" placeholder="E-Mail Address" required>
+                        <div class="invalid-feedback">
+                            Please supply your email address
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone #</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                        </div>
+                        <input type="text" class="form-control" id="phone" placeholder="(845)555-1212" required>
+                        <div class="invalid-feedback">
+                            Please supply your phone number
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-home"></i></span>
+                        </div>
+                        <input type="text" class="form-control" id="address" placeholder="Address" required>
+                        <div class="invalid-feedback">
+                            Please supply your street address
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-building"></i></span>
+                        </div>
+                        <input type="text" class="form-control" id="city" placeholder="City" required>
+                        <div class="invalid-feedback">
+                            Please supply your city
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="state">State</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
+                        </div>
+                        <select class="form-control" id="state" required>
+                            <option value="">Please select your state</option>
+                            <option value="India">India</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select your state
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Do you have hosting?</label>
+                    <div class="form-check ml-3">
+                        <input class="form-check-input" type="radio" name="hosting" id="hostingYes" value="yes"> Yes
+                        <br><br>
+                        <input class="form-check-input" type="radio" name="hosting" id="hostingNo" value="no">No
+                     
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="projectDescription">Project Description</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-pencil"></i></span>
+                        </div>
+                        <textarea class="form-control" id="projectDescription" rows="3" placeholder="Project Description" required></textarea>
+                        <div class="invalid-feedback">
+                            Please supply your project description
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-warning btn-custom"><i class="fa fa-paper-plane"></i> Send</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                var forms = document.getElementsByTagName('form');
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+</body>
+</html>

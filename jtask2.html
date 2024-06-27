@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS TASK2</title>
+</head>
+<body>
+    <h3>Javascript function that returns a passed string with letters in alphabetical order</h3>
+    <script>
+     function alphabetizeString(str) {
+     let charArray = str.split('');
+     let sortedArray = charArray.sort();
+     let sortedStr = sortedArray.join('');
+     return sortedStr;
+     }
+     let originalString = "webmaster";
+     let sortedString = alphabetizeString(originalString);
+     console.log(`Original string: ${originalString}`); // Output: Original string: webmaster
+     console.log(`Sorted string: ${sortedString}`);     // Output: Sorted string: abeemrstw
+    </script>
+</body>
+</html>

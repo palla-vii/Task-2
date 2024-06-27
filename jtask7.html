@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS TASK 7</title>
+    <style>
+        .container {
+            margin: auto;
+            width: 800px;
+            text-align: center;
+        }
+        #train {
+            position: relative;
+            display: block;
+            margin: 20px auto;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        h2 {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img id="train" src="train.png" alt="Train">
+        <h2>Click the following buttons to handle animation</h2>
+        <div class="buttons">
+            <button id="start">Start</button>
+            <button id="stop">Stop</button>
+        </div>
+    </div>
+    
+    <script>
+        let timer;
+        let startButton = document.getElementById('start');
+        let stopButton = document.getElementById('stop');
+        let train = document.getElementById('train');
+        let start = 0;
+
+        startButton.onclick = function() {
+            clearInterval(timer); 
+            train.style.left = '0px'; 
+            start = Date.now();
+
+            timer = setInterval(function() {
+                let timePassed = Date.now() - start;
+                train.style.left = timePassed / 5 + 'px';
+
+                if (timePassed >2000) clearInterval(timer);
+
+            }, 20);
+        }
+
+        stopButton.onclick = function() {
+            clearInterval(timer);
+        }
+    </script>
+
+</body>
+</html>
